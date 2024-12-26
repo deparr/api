@@ -16,6 +16,7 @@ func ListenAndServe(host, port string) error {
 	server.Use(middleware.Recover())
 
 	server.GET("/gh/pinned", getPinned)
+	server.GET("/gh/recent", getRecent)
 
 	addr := host + ":" + port
 
