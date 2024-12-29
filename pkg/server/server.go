@@ -9,6 +9,11 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+func healthCheck(ctx echo.Context) error {
+	return ctx.String(http.StatusBadRequest, "")
+	// return ctx.String(http.StatusOK, "")
+}
+
 func ListenAndServe(host, port string) error {
 	server := echo.New()
 
@@ -17,6 +22,7 @@ func ListenAndServe(host, port string) error {
 
 	server.GET("/gh/pinned", getPinned)
 	server.GET("/gh/recent", getRecent)
+	server.GET("/health", healthCheck)
 
 	addr := host + ":" + port
 

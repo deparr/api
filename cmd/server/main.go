@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	err := godotenv.Load(os.Args[1])
+	err := godotenv.Load()
 	if err != nil {
 		slog.Error("loading environ:", "error", err)
 		os.Exit(1)
