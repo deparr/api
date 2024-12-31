@@ -10,8 +10,7 @@ import (
 )
 
 func healthCheck(ctx echo.Context) error {
-	return ctx.String(http.StatusBadRequest, "")
-	// return ctx.String(http.StatusOK, "")
+	return ctx.String(http.StatusOK, "")
 }
 
 func ListenAndServe(host, port string) error {

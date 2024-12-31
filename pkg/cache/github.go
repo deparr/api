@@ -122,7 +122,7 @@ func updateRepoCache(t time.Time) {
 	pinnedRes, err := fetchPinned(ctx, client)
 	var pinnedClean []model.Repository
 	if err != nil {
-		slog.Error("fetching cache(gh.pinned", "err", err)
+		slog.Error("fetching cache(gh.pinned)", "err", err)
 	} else {
 		nodes := pinnedRes.User.PinnedItems.Nodes
 		frags := make([]RepoFrag, len(nodes))
@@ -135,7 +135,7 @@ func updateRepoCache(t time.Time) {
 	recentRes, err := fetchRecent(ctx, client)
 	var recentClean []model.Repository
 	if err != nil {
-		slog.Error("fetching cache(gh.recent", "err", err)
+		slog.Error("fetching cache(gh.recent)", "err", err)
 	} else {
 		recentClean = cleanRepoQueryRes(recentRes.User.Repositories.Nodes)
 	}
