@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/deparr/api/pkg/cache"
+	"github.com/deparr/api/cache"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )

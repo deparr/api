@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/deparr/api/pkg/model"
+	"github.com/deparr/api/model"
 	"github.com/shurcooL/githubv4"
 	"golang.org/x/oauth2"
 )

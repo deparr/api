@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/deparr/api/pkg/model"
+	"github.com/deparr/api/model"
 )
 
 type githubCache struct {

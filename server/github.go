@@ -3,7 +3,7 @@ package server
 import (
 	"net/http"
 
-	"github.com/deparr/api/pkg/cache"
+	"github.com/deparr/api/cache"
 	"github.com/labstack/echo/v4"
 )
 

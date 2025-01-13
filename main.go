@@ -5,7 +5,7 @@ import (
 
 	"os"
 
-	"github.com/deparr/api/pkg/server"
+	"github.com/deparr/api/server"
 	"github.com/joho/godotenv"
 )
 
