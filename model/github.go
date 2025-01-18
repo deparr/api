@@ -16,4 +16,5 @@ type Repository struct {
 	PushedAt string    `json:"pushed_at,omitempty"`
 	Language RepoLangs `json:"language,omitempty"`
 	Stars    int       `json:"stars,omitempty"`
+	Forks    int       `json:"forks,omitempty"`
 }

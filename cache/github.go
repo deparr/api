@@ -22,6 +22,8 @@ type (
 		Url            string
 		Description    string
 		StargazerCount int
+		ForkCount      int
+		IsFork		   bool
 		Languages      struct {
 			Edges []struct {
 				Node struct {
@@ -49,7 +51,7 @@ type (
 		User struct {
 			Repositories struct {
 				Nodes []RepoFrag
-			} `graphql:"repositories(first:6,orderBy:{field:PUSHED_AT,direction:DESC},visibility:PUBLIC)"`
+			} `graphql:"repositories(first:10,orderBy:{field:PUSHED_AT,direction:DESC},visibility:PUBLIC)"`
 		} `graphql:"user(login: \"deparr\")"`
 	}
 )
@@ -83,9 +85,13 @@ func fetchRecent(ctx context.Context, client *githubv4.Client) (*recentsQuery, e
 }
 
 func cleanRepoQueryRes(repos []RepoFrag) []model.Repository {
-	clean := make([]model.Repository, len(repos))
+	clean := make([]model.Repository, min(len(repos), 6))
 
-	for i, repo := range repos {
+	i := 0
+	for _, repo := range repos {
+		if repo.IsFork {
+			continue;
+		}
 
 		var cleaned model.Repository
 		cleaned.Owner = repo.Owner.Login
@@ -111,6 +117,10 @@ func cleanRepoQueryRes(repos []RepoFrag) []model.Repository {
 		cleaned.Language = langs
 
 		clean[i] = cleaned
+		i += 1;
+		if i >= len(clean) {
+			break;
+		}
 	}
 	return clean
 }
